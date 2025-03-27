@@ -1,26 +1,133 @@
 @import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+    --background: hsl(260, 20%, 4%);
+    --foreground: hsl(280, 10%, 98%);
+
+    --card: hsl(260, 15%, 10%);
+    --card-foreground: hsl(280, 10%, 98%);
+
+    --popover: hsl(260, 15%, 8%);
+    --popover-foreground: hsl(280, 10%, 98%);
+
+    --primary: hsl(265, 84%, 70%);
+    --primary-foreground: hsl(210, 40%, 98%);
+
+    --secondary: hsl(260, 15%, 15%);
+    --secondary-foreground: hsl(210, 40%, 98%);
+
+    --muted: hsl(260, 15%, 20%);
+    --muted-foreground: hsl(260, 10%, 70%);
+
+    --accent: hsl(270, 74%, 75%);
+    --accent-foreground: hsl(210, 40%, 98%);
+
+    --destructive: hsl(0, 84.2%, 60.2%);
+    --destructive-foreground: hsl(210, 40%, 98%);
+
+    --border: hsl(260, 15%, 15%);
+    --input: hsl(260, 15%, 15%);
+    --ring: hsl(265, 84%, 70%);
+
+    --radius: 0.75rem;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+    border-color: var(--border);
+    ::selection {
+        background-color: rgba(107, 8, 174, 0.1);
+        color: white;
+    }
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+    background-color: var(--background);
+    color: var(--foreground);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+    background-image: 
+        radial-gradient(circle at 20% 35%, rgba(107, 8, 174, 0.15) 0%, transparent 30%),
+        radial-gradient(circle at 75% 70%, rgba(107, 8, 174, 0.1) 0%, transparent 20%);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
 }
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: #222; /* Replace with a suitable color */
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: rgba(107, 8, 174, 0.5);
+    border-radius: 9999px;
+    transition: background-color 0.2s ease-in-out;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(107, 8, 174, 0.8);
+}
+.glass {
+    background-color: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 20px -2px rgba(155, 135, 245, 0.15);
+}
+
+.glass-dark {
+    background-color: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.3);
+}
+
+.text-gradient {
+    background: linear-gradient(to bottom right, var(--purple-light), var(--purple), var(--accent));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.text-shadow {
+    text-shadow: 0 0 20px rgba(155, 135, 245, 0.5);
+}
+
+.animate-on-scroll {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.animate-on-scroll.animate {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.section-padding {
+    padding: 4rem 1.5rem;
+}
+
+@media (min-width: 768px) {
+    .section-padding {
+        padding: 6rem 3rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    .section-padding {
+        padding: 6rem 6rem;
+    }
+}
+
